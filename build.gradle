@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE')
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'docker'
+
+// This is used as the docker image prefix (org)
+group = 'meetvas'
+
+jar {
+    baseName = 'emp-info'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+     compile("org.springframework.boot:spring-boot-starter-web")
+     compile("mysql:mysql-connector-java:5.1.6")
+     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
