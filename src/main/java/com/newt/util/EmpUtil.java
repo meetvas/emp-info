@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 public class EmpUtil {
 
+	// Updated
 	public static ResponseEntity<?> getOK(Object obj) {
 		ResponseEntity<Object> responseEntity = null;
 		responseEntity = new ResponseEntity<Object>(obj, HttpStatus.OK);
