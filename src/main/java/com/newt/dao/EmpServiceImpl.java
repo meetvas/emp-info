@@ -1,5 +1,7 @@
 package com.newt.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,21 @@ import com.newt.model.Employee;
 public class EmpServiceImpl implements EmpService {
 	
 	@Autowired
-	private EmpDao empDao;
+	private EmpRepository empRepo;
 	
 	public Employee getEmp(Long id) {
-		return empDao.findOne(id);
+		return empRepo.findOne(id);
+	}
+	
+	public void deleteEmployee(Long id) {
+		empRepo.delete(empRepo.findOne(id));
+	}
+	
+	public void addOrUpdateEmployee(Employee emp) {
+		empRepo.save(emp);
+	}
+	
+	public List<Employee> searchEmp(String keyword) {
+		return empRepo.searchEmp(keyword.toLowerCase());
 	}
 }

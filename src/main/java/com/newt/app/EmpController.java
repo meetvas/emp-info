@@ -1,10 +1,11 @@
 package com.newt.app;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,12 @@ public class EmpController {
   	      log.error("Exception: "+ex);
   	      return EmpUtil.getFailed(ex.getMessage());
   	    }
+    }
+    
+    @RequestMapping(value = "/searchEmp", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> getEmpList(String keyword) {
+    	List<Employee> empList = empService.searchEmp(keyword);
+    	return EmpUtil.getOK(empList);
     }
 
 }
