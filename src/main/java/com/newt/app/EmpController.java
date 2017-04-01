@@ -39,6 +39,12 @@ public class EmpController {
   	    }
     }
     
+    @RequestMapping(value = "/addOrUpdateEmp", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
+    public ResponseEntity<?> getEmpList(Employee emp) {
+    	empService.addOrUpdateEmployee(emp);
+    	return EmpUtil.getOK(new Object());
+    }
+    
     @RequestMapping(value = "/searchEmp", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> getEmpList(String keyword) {
     	List<Employee> empList = empService.searchEmp(keyword);
