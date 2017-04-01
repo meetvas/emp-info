@@ -7,7 +7,7 @@ import com.newt.model.Employee;
 public interface EmpService {
 	public Employee getEmp(Long id);
 	public void deleteEmployee(Long id);
-	public void addOrUpdateEmployee(Employee emp);
+	public Employee addOrUpdateEmployee(Employee emp);
 	public List<Employee> searchEmp(String keyword);
 }
 

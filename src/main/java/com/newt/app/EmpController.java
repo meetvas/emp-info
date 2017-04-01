@@ -22,7 +22,7 @@ public class EmpController {
 	@Autowired
 	private EmpService empService;
     
-    @RequestMapping(value = "/getEmployee", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/getEmp", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> getEmployee(Long id) {
     	try {
     	  log.debug("Request Parameter Id: "+id);
@@ -41,8 +41,13 @@ public class EmpController {
     
     @RequestMapping(value = "/addOrUpdateEmp", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
     public ResponseEntity<?> getEmpList(Employee emp) {
+    	System.out.println("emp:"+emp);
+    	System.out.println("emp first name:"+emp.getFirstName());
+    	System.out.println("emp last name:"+emp.getLastName());
+    	System.out.println("emp email:"+emp.getEmailId());
+    	System.out.println("emp id:"+emp.getId());
     	empService.addOrUpdateEmployee(emp);
-    	return EmpUtil.getOK(new Object());
+    	return EmpUtil.getOK(emp);
     }
     
     @RequestMapping(value = "/searchEmp", method = RequestMethod.GET, produces = "application/json")

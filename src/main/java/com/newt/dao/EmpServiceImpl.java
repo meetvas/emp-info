@@ -24,8 +24,8 @@ public class EmpServiceImpl implements EmpService {
 		empRepo.delete(empRepo.findOne(id));
 	}
 	
-	public void addOrUpdateEmployee(Employee emp) {
-		empRepo.save(emp);
+	public Employee addOrUpdateEmployee(Employee emp) {
+		return empRepo.save(emp);
 	}
 	
 	public List<Employee> searchEmp(String keyword) {
